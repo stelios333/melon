@@ -29,27 +29,21 @@
             padding: 0;
         }
 
-        .inside-btn {
-            position: absolute;
-            right: 60%;
-            top: 62%;
-            display: none;
-        }
+        
 
-        .inside-btn2 {
+        .over-canvas {
+            text-align: center;
+            display: flex;
+            row-gap: 5px;
+            column-gap: 5px;
+            flex-wrap: wrap;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
             top: 62%;
-            display: none;
         }
 
-        .inside-btn3 {
-            position: absolute;
-            left: 60%;
-            top: 62%;
-            display: none;
-        }
+        
 
         .inside-btn4 {
             position: absolute;
@@ -123,9 +117,11 @@
 <body>
     <div class="container">
         <img style='display:none' src="https://github.com/stelios333/ola/raw/master/mouth.png" id=image>
-        <button class="inside-btn btn btn-primary" onclick="changemod(2, 16, 'easy')" id="easy">Easy mode</button>
-        <button class="inside-btn2 btn btn-primary" onclick="changemod(4, 10, 'med')" id="med">Medium mode</button>
-        <button class="inside-btn3 btn btn-primary" onclick="changemod(8, 6, 'diff')" id="diff">Difficult mode</button>
+        <div class="over-canvas">
+            <button class="btn btn-primary" onclick="changemod(2, 16, 'easy')" id="easy">Easy mode</button>
+            <button class="btn btn-primary" onclick="changemod(4, 10, 'med')" id="med">Medium mode</button>
+            <button class="btn btn-primary" onclick="changemod(8, 6, 'diff')" id="diff">Difficult mode</button>
+        </div>
         <button class="inside-btn4 btn btn-primary" onmousedown="speed = -14" ontouchstart="speed = -14"
             onmouseup="speed = 0" ontouchend="speed = 0" id="left">&lt;</button>
         <button class="inside-btn5 btn btn-primary" onmousedown="speed = 14" ontouchstart="speed = 14"
@@ -180,9 +176,7 @@
 
 
         function restart_game(t = 12, sp = 6) {
-            $("#easy").slideUp()
-            $('#med').slideUp()
-            $('#diff').slideUp()
+            $(".over-canvas").slideUp()
             gis = true
             time_remaining = t;
             score = 0;
@@ -217,9 +211,7 @@
 
             if (time_remaining <= 0) {
                 if (!loading) {
-                    $("#easy").slideDown()
-                    $('#med').slideDown()
-                    $('#diff').slideDown()
+                    $(".over-canvas").slideDown()
                 }
                 if (gis) {
 
